@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,700;0,800;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <title>Frontend Mentor | Age calculator app</title>
+    <style>
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <main
+      class="min-h-screen bg-neutral-100 flex items-center justify-center p-4"
+    >
+      <section
+        class="w-full max-w-lg bg-white rounded-br-[100px] rounded-t-2xl rounded-bl-2xl p-6 md:p-6 shadow-sm"
+      >
+        <div class="flex items-center gap-4 md:gap-8 mb-5 max-w-md">
+          <div class="flex flex-col gap-1 w-24">
+            <label
+              id="day-label"
+              for="day"
+              class="text-sm font-bold tracking-[0.3em] text-gray-400"
+              >DAY</label
+            >
+            <input
+              id="day"
+              type="number"
+              placeholder="DD"
+              required
+              class="border border-gray-300 p-2 mt-1 rounded-sm font-bold text-xl transition-colors duration-200 cursor-pointer hover:border-gray-500 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-100"
+            />
+            <p
+              id="day-error"
+              class="text-red-500 text-xs italic mt-1 min-h-[16px]"
+              aria-live="polite"
+            ></p>
+          </div>
+          <div class="flex flex-col gap-1 w-24">
+            <label
+              id="month-label"
+              for="month"
+              class="text-sm font-bold tracking-[0.3em] text-gray-400"
+              >MONTH</label
+            >
+            <input
+              id="month"
+              type="number"
+              placeholder="MM"
+              required
+              class="border border-gray-300 p-2 mt-1 rounded-sm font-bold text-xl transition-colors duration-200 cursor-pointer hover:border-gray-500 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-100"
+            />
+            <p
+              id="month-error"
+              class="text-red-500 text-xs italic mt-1 min-h-[16px]"
+              aria-live="polite"
+            ></p>
+          </div>
+          <div class="flex flex-col gap-1 w-24">
+            <label
+              id="year-label"
+              for="year"
+              class="text-sm font-bold tracking-[0.3em] text-gray-400"
+              >YEAR</label
+            >
+            <input
+              id="year"
+              type="number"
+              placeholder="YYYY"
+              required
+              class="border border-gray-300 p-2 mt-1 rounded-sm font-bold text-xl transition-colors duration-200 cursor-pointer hover:border-gray-500 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-100"
+            />
+            <p
+              id="year-error"
+              class="text-red-500 text-xs italic mt-1 min-h-[16px]"
+              aria-live="polite"
+            ></p>
+          </div>
+        </div>
+
+        <div class="relative w-full mt-7">
+          <hr class="leading-none border-gray-200" />
+          <button
+            id="btn"
+            type="button"
+            aria-label="Calculate age"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:left-auto md:right-0 md:translate-x-0 border border-gray-200 bg-purple-600 rounded-full p-3 hover:bg-purple-700 active:bg-black transition-colors duration-200 cursor-pointer focus:outline-none"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="34"
+              viewBox="0 0 46 44"
+              class="w-6 h-6 stroke-white stroke-2 fill-none pointer-events-none"
+            >
+              <g fill="none" stroke="#FFF" stroke-width="2">
+                <path
+                  d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"
+                />
+              </g>
+            </svg>
+          </button>
+        </div>
+
+        <div class="mt-6 space-y-1">
+          <p
+            class="font-extrabold text-4xl sm:text-5xl md:text-6xl leading-none"
+          >
+            <span id="years-output" class="text-purple-500 italic">--</span>
+            <span class="text-gray-900 not-italic">years</span>
+          </p>
+
+          <p
+            class="font-extrabold text-4xl sm:text-5xl md:text-6xl leading-none"
+          >
+            <span id="months-output" class="text-purple-500">--</span>
+            <span class="text-gray-900 not-italic">months</span>
+          </p>
+
+          <p
+            class="font-extrabold text-4xl sm:text-5xl md:text-6xl leading-none"
+          >
+            <span id="days-output" class="text-purple-500 italic">--</span>
+            <span class="text-gray-900 not-italic">days</span>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">Nebiyat Hawi</a>.
+    </footer>
+    <script src="./script.js"></script>
+  </body>
+</html>
