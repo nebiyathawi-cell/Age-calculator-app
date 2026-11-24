@@ -1,14 +1,46 @@
-const yearsOutput = document.getElementById("years-output");
-const monthsOutput = document.getElementById("months-output");
-const daysOutput = document.getElementById("days-output");
 
-const dayInput = document.getElementById("day");
-const monthInput = document.getElementById("month");
-const yearInput = document.getElementById("year");
 
-const submitBtn = document.querySelector('button[type="button"]');
+type FieldId = "day" | "month" | "year";
 
-function setError(inputEl, labelEl, errorEl, message) {
+
+interface ageField {
+  input: HTMLInputElement;
+  label: HTMLLabelElement;
+  error:HTMLElement;
+}
+
+
+interface age {
+  day: number;
+  month: number;
+  year:number;
+}
+
+const yearsOutput = document.getElementById("years-output") as HTMLElement;
+const monthsOutput = document.getElementById("months-output")as HTMLElement;
+const daysOutput = document.getElementById("days-output")as HTMLElement;
+
+const dayInput = document.getElementById("day")as HTMLInputElement;
+const monthInput = document.getElementById("month")as HTMLInputElement;
+const yearInput = document.getElementById("year")as HTMLInputElement;
+const dayLabel = document.getElementById("day-label")as HTMLElement;
+const monthLabel = document.getElementById("month-label")as HTMLElement;
+const yearLabel = document.getElementById("year-label")as HTMLElement;
+
+const dayError = document.getElementById("day-error")as HTMLElement;
+const monthError = document.getElementById("month-error")as HTMLElement;
+const yearError = document.getElementById("year-error")as HTMLElement;
+
+
+const submitBtn = document.querySelector('button[type="button"]')as HTMLElement;
+
+function setError(
+  inputEl:HTMLInputElement,
+  labelEl:HTMLElement,
+  errorEl:HTMLElement,
+  message:string
+): void
+ {
   inputEl.classList.add(
     "border-red-500",
     "focus:border-red-500",
@@ -22,20 +54,20 @@ function setError(inputEl, labelEl, errorEl, message) {
   errorEl.textContent = message;
 }
 
-function clearErrors() {
+function clearErrors(): void {
   const inputs = [dayInput, monthInput, yearInput];
   const labels = [
     document.getElementById("day-label"),
     document.getElementById("month-label"),
-    document.getElementById("year-label"),
+    document.getElementById("year-label") ,
   ];
   const errors = [
-    document.getElementById("day-error"),
-    document.getElementById("month-error"),
+    document.getElementById("day-error"), 
+    document.getElementById("month-error") ,
     document.getElementById("year-error"),
   ];
 
-  inputs.forEach((input, index) => {
+  inputs.forEach((input: HTMLInputElement, index: number) => {
     input.classList.remove(
       "border-red-500",
       "focus:border-red-500",
@@ -54,14 +86,14 @@ function clearErrors() {
   });
 }
 
-function resetOutputs() {
+function resetOutputs(): void {
   yearsOutput.textContent = "--";
   monthsOutput.textContent = "--";
   daysOutput.textContent = "--";
 }
 
-submitBtn.addEventListener("click", function (e) {
-  e.preventDefault(); // Stop page reload
+submitBtn.addEventListener("click", function (e): void {
+  e.preventDefault(); 
 
   clearErrors();
 
@@ -73,14 +105,7 @@ submitBtn.addEventListener("click", function (e) {
   const month = parseInt(monthVal);
   const year = parseInt(yearVal);
 
-  const dayLabel = document.getElementById("day-label");
-  const monthLabel = document.getElementById("month-label");
-  const yearLabel = document.getElementById("year-label");
-
-  const dayError = document.getElementById("day-error");
-  const monthError = document.getElementById("month-error");
-  const yearError = document.getElementById("year-error");
-
+  
   let hasError = false;
 
   if (!dayVal) {
@@ -151,7 +176,7 @@ submitBtn.addEventListener("click", function (e) {
     calcMonths += 12;
   }
 
-  yearsOutput.textContent = calcYears;
-  monthsOutput.textContent = calcMonths;
-  daysOutput.textContent = calcDays;
+  yearsOutput.textContent = calcYears.toString();
+  monthsOutput.textContent = calcMonths.toString();
+  daysOutput.textContent = calcDays.toString();
 });
